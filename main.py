@@ -71,12 +71,13 @@ def get_receipt (company):
         os.rename(f"{folder}/{item}", rename)
         if item.endswith('.pdf'):
             shutil.move(rename, path)
-    # slack.notify(text="amazon請求書を取得しました")
+        i = i + 1 
+    slack.notify(text="amazon請求書を取得しました")
 
 if doing_day == 21:
     get_receipt("google")
     get_receipt("amazon")
-elif doing_day == 1:
+elif doing_day == 2:
     get_receipt("amazon")
 
 else:
