@@ -19,9 +19,10 @@ target_date = dt_now - date_term
 doing_day =dt_now.day
 
 my_mail = "kusui@foodnetwork.co.jp"
-app_password = "pxgqmakzutkdffdq"
+# app_password = "pxgqmakzutkdffdq"
 
 slacks =os.getenv('slack')
+app_password  = os.getenv('app_password')
 
 slack =Slack(slacks)
 
@@ -77,7 +78,7 @@ def get_receipt (company):
 if doing_day == 21:
     get_receipt("google")
     get_receipt("amazon")
-elif doing_day == 2:
+elif doing_day == 3:
     get_receipt("amazon")
 
 else:
