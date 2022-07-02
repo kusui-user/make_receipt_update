@@ -36,8 +36,8 @@ context = ssl.SSLContext(SSL.TLSv1_2_METHOD)
 imap = imapclient.IMAPClient("imap.gmail.com", ssl=True, ssl_context=context)
 imap.login(my_mail, app_password)
 
-folder = r'C:\Users\kusui\Desktop\folder'
-path = r'C:\Users\kusui\Desktop\folder\top' + str(holder_name)
+folder = r'C:\Users\kusui\OneDrive\デスクトップ\folder'
+path = r'C:\Users\kusui\OneDrive\デスクトップ\folder\top' + str(holder_name)
 
 if os.path.exists(path):
   pass
@@ -66,8 +66,9 @@ def get_receipt (company):
                 f.write(part.get_payload(decode=True))
 
     folder1 = os.listdir(folder)
+    
     for item in folder1:
-        rename = "C:\\Users\\kusui\\Desktop\\folder\\" + company + str(ym) + str(i) + '.pdf'
+        rename = "C:\\Users\\kusui\\OneDrive\\デスクトップ\\folder\\" + company + str(ym) + str(i) + '.pdf'
         os.rename(f"{folder}/{item}", rename)
         if item.endswith('.pdf'):
             shutil.move(rename, path)
@@ -78,7 +79,7 @@ if doing_day == 21:
     get_receipt("google")
     get_receipt("amazon")
 elif doing_day == 2:
-    get_receipt("amazon")
+    get_receipt("google")
 
 else:
     print("no")
