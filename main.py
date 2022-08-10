@@ -69,8 +69,8 @@ def get_receipt (company):
     folder1 = os.listdir(folder)
     for item in folder1:
         rename = "C:\\Users\\kusui\\Desktop\\folder\\" + company + str(ym) + str(i) + '.pdf'
-        os.rename(f"{folder}/{item}", rename)
         if item.endswith('.pdf'):
+            os.rename(f"{folder}/{item}", rename)
             shutil.move(rename, path)
         i = i + 1 
     slack.notify(text="amazon請求書を取得しました")
@@ -78,7 +78,7 @@ def get_receipt (company):
 if doing_day == 21:
     get_receipt("google")
     get_receipt("amazon")
-elif doing_day == 3:
+elif doing_day == 16:
     get_receipt("amazon")
 
 else:
