@@ -21,10 +21,10 @@ doing_day =dt_now.day
 my_mail = "kusui@foodnetwork.co.jp"
 # app_password = "pxgqmakzutkdffdq"
 
-slacks =os.getenv('slack')
+# slacks =os.getenv('slack')
 app_password  = os.getenv('app_password')
 
-slack =Slack(slacks)
+# slack =Slack(slacks)
 
 
 mail_list = {"google": "payments-noreply@google.com",
@@ -37,8 +37,8 @@ context = ssl.SSLContext(SSL.TLSv1_2_METHOD)
 imap = imapclient.IMAPClient("imap.gmail.com", ssl=True, ssl_context=context)
 imap.login(my_mail, app_password)
 
-folder = r'C:\Users\kusui\Desktop\folder'
-path = r'C:\Users\kusui\Desktop\folder\top' + str(holder_name)
+folder = r'C:\Users\kusui\OneDrive\デスクトップ\folder'
+path = r'C:\Users\kusui\OneDrive\デスクトップ\folder\top' + str(holder_name)
 
 if os.path.exists(path):
   pass
@@ -50,10 +50,8 @@ def get_receipt (company):
     KWD = imap.search(["SINCE", target_date, "FROM", mail_list[company]])
     raw_message = imap.fetch(KWD, ["BODY[]"])
 
-
     i = 0
     
-
     for j in range(len(KWD)):
 
         # 特定メール取得
@@ -66,23 +64,23 @@ def get_receipt (company):
             with open(f'{folder}/{file_name}', 'wb') as f:
                 f.write(part.get_payload(decode=True))
 
-    folder1 = os.listdir(folder)
-    for item in folder1:
-        rename = "C:\\Users\\kusui\\Desktop\\folder\\" + company + str(ym) + str(i) + '.pdf'
+    for item in os.listdir(folder):
+        rename = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\folder\\' + company + str(ym) + str(i) + '.pdf'
         if item.endswith('.pdf'):
             os.rename(f"{folder}/{item}", rename)
-            shutil.move(rename, path)
+            # shutil.move(rename, path)
+            return rename
         i = i + 1 
-    slack.notify(text="amazon請求書を取得しました")
+    # slack.notify(text="amazon請求書を取得しました")
 
-if doing_day == 21:
-    get_receipt("google")
-    get_receipt("amazon")
-elif doing_day == 16:
-    get_receipt("amazon")
+# if doing_day == 21:
+#     get_receipt("google")
+#     get_receipt("amazon")
+# elif doing_day == 12:
+#     get_receipt("amazon")
 
-else:
-    print("no")
+# else:
+#     print("no")
 
 
 
