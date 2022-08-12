@@ -75,9 +75,9 @@ def get_receipt (company):
         i = i + 1 
     slack.notify(text="amazon請求書を取得しました")
 
-if doing_day == 21:
-    get_receipt("google")
-    get_receipt("amazon")
+if doing_day == 3:
+    # get_receipt("google")
+    get_receipt("iizuka")
 elif doing_day == 2:
     get_receipt("google")
 
