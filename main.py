@@ -76,6 +76,7 @@ def get_receipt (company):
             return rename_home
     
         i = i + 1 
+        
     slack.notify(text="amazon請求書を取得しました")
 
 # if doing_day == 21:
