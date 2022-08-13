@@ -19,8 +19,8 @@ target_date = dt_now - date_term
 doing_day =dt_now.day
 
 my_mail = "kusui@foodnetwork.co.jp"
-# app_password = "pxgqmakzutkdffdq"
-# slack ="https://hooks.slack.com/services/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"
+
+
 
 slacks =os.getenv('slack')
 app_password  = os.getenv('app_password')
