@@ -45,7 +45,7 @@ def moving_google_drive(rename,title) :
    f['title'] = title
    f.Upload()
 
-if playing_date == 12:
+if playing_date == 13:
   rename = main.get_receipt("google")
   moving_google_drive(rename, "google")
 

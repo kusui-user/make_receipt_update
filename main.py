@@ -20,11 +20,12 @@ doing_day =dt_now.day
 
 my_mail = "kusui@foodnetwork.co.jp"
 # app_password = "pxgqmakzutkdffdq"
+# slack ="https://hooks.slack.com/services/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"
 
-# slacks =os.getenv('slack')
+slacks =os.getenv('slack')
 app_password  = os.getenv('app_password')
 
-# slack =Slack(slacks)
+slack =Slack(slacks)
 
 
 mail_list = {"google": "payments-noreply@google.com",
@@ -38,12 +39,14 @@ imap = imapclient.IMAPClient("imap.gmail.com", ssl=True, ssl_context=context)
 imap.login(my_mail, app_password)
 
 folder = r'C:\Users\kusui\OneDrive\デスクトップ\folder'
+folder_home = r'C:\Users\kusui\Desktop\folder'
 path = r'C:\Users\kusui\OneDrive\デスクトップ\folder\top' + str(holder_name)
+path_home = r'C:\Users\kusui\Desktop\folder\recipt' + str(holder_name)
 
-if os.path.exists(path):
+if os.path.exists(path_home):
   pass
 else:
-  os.mkdir(path)
+  os.mkdir(path_home)
 
 def get_receipt (company):
     imap.select_folder("INBOX", readonly=True)
@@ -61,17 +64,19 @@ def get_receipt (company):
             if not file_name:
                 continue
 
-            with open(f'{folder}/{file_name}', 'wb') as f:
+            with open(f'{folder_home}/{file_name}', 'wb') as f:
                 f.write(part.get_payload(decode=True))
 
-    for item in os.listdir(folder):
+    for item in os.listdir(folder_home):
         rename = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\folder\\' + company + str(ym) + str(i) + '.pdf'
+        rename_home = 'C:\\Users\\kusui\\Desktop\\folder\\' + company + str(ym) + str(i) + '.pdf'
         if item.endswith('.pdf'):
-            os.rename(f"{folder}/{item}", rename)
+            os.rename(f"{folder_home}/{item}", rename_home)
             # shutil.move(rename, path)
-            return rename
+            return rename_home
+    
         i = i + 1 
-    # slack.notify(text="amazon請求書を取得しました")
+    slack.notify(text="amazon請求書を取得しました")
 
 # if doing_day == 21:
 #     get_receipt("google")
