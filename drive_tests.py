@@ -4,6 +4,8 @@ from pydrive2.drive import GoogleDrive
 import datetime
 import main
 
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 
 dt_today = datetime.datetime.now()
 
