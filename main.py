@@ -40,13 +40,13 @@ imap.login(my_mail, app_password)
 
 folder = r'C:\Users\kusui\OneDrive\デスクトップ\folder'
 folder_home = r'C:\Users\kusui\Desktop\folder'
-path = r'C:\Users\kusui\OneDrive\デスクトップ\folder\top' + str(holder_name)
+path = r'C:\Users\kusui\OneDrive\デスクトップ\folder\recipt' + str(holder_name)
 path_home = r'C:\Users\kusui\Desktop\folder\recipt' + str(holder_name)
 
-if os.path.exists(path_home):
+if os.path.exists(path):
   pass
 else:
-  os.mkdir(path_home)
+  os.mkdir(path)
 
 def get_receipt (company):
     imap.select_folder("INBOX", readonly=True)
@@ -64,20 +64,20 @@ def get_receipt (company):
             if not file_name:
                 continue
 
-            with open(f'{folder_home}/{file_name}', 'wb') as f:
+            with open(f'{folder}/{file_name}', 'wb') as f:
                 f.write(part.get_payload(decode=True))
 
-    for item in os.listdir(folder_home):
+    for item in os.listdir(folder):
         rename = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\folder\\' + company + str(ym) + str(i) + '.pdf'
         rename_home = 'C:\\Users\\kusui\\Desktop\\folder\\' + company + str(ym) + str(i) + '.pdf'
         if item.endswith('.pdf'):
-            os.rename(f"{folder_home}/{item}", rename_home)
+            os.rename(f"{folder}/{item}", rename)
             # shutil.move(rename, path)
-            return rename_home
+            return rename
     
         i = i + 1 
         
-    slack.notify(text="amazon請求書を取得しました")
+    # slack.notify(text="amazon請求書を取得しました")
 
 # if doing_day == 21:
 #     get_receipt("google")

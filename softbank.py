@@ -6,16 +6,15 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from pathlib import Path
 import shutil
 import datetime
-import os
 import win32api
 import win32print
 
 dt_now = datetime.datetime.now()
 ym = dt_now.strftime('%Y-%m')
 USERID ="e-shop@g4-suehiro.jp"
-PASSWORD ="suehiro444"
+PASSWORD ="Suehiro44593"
 
-def fujifile():
+def softbank () :
     options = webdriver.EdgeOptions()
     download = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\download'
 
@@ -27,44 +26,50 @@ def fujifile():
         options=options
     )
 
-    driver.get("https://sso-web-fb.fujifilm.com/direct/ebilling/")
+    driver.get("https://webmeisai.itc.softbank.jp")
 
 
-
-    driver.find_element(by=By.ID, value="IDToken1").send_keys(USERID)
+    driver.find_element(by=By.ID, value="login").send_keys(USERID)
     driver.implicitly_wait(10)
-
-    driver.find_element(by=By.ID, value="IDToken2").send_keys(PASSWORD)
+    driver.find_element(by=By.ID, value="password").send_keys(PASSWORD)
     driver.implicitly_wait(10)
+    sleep(1)
 
-    driver.find_element(By.NAME, "IDButton").click()
+    driver.find_element(By.CLASS_NAME, value="btn-01").click()
+
+    driver.switch_to.frame(driver.find_element(By.ID, value="embeddedIframe"))
     driver.implicitly_wait(10)
+    driver.find_element(By.CLASS_NAME, value="btnBill").click()
+    sleep(2)
 
-    driver.find_element(By.CLASS_NAME, "menuInfo").click()
+
     driver.implicitly_wait(10)
-
-    driver.find_element(By.ID, 'ebillingDownload').click()
     sleep(2)
 
     targetPath = Path('C:\\Users\\kusui\\OneDrive\\デスクトップ\\download')
-    rename = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\download\\富士フィルム.pdf'
+    rename = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\download\\ソフトバンク.pdf'
     moved_folder = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書\\' + str(ym)
 
-
-
+    
     for item in targetPath.glob('*.pdf'):
         item2 = item.rename(rename)
         item3 = shutil.move(item2, moved_folder )
         conf_file_path = item3
         win32api.ShellExecute(
-            0,
-            "print",
-            conf_file_path,
-            "/c:""%s" % win32print.GetDefaultPrinter(),
-            ".",
-            0
-                )
-    return item3
-        
-        
 
+                0,
+                "print",
+                conf_file_path,
+                "/c:""%s" % win32print.GetDefaultPrinter(),
+                ".",
+                0
+                    )
+        return item3
+
+
+
+
+
+    
+      
+   
