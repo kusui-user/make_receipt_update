@@ -5,12 +5,12 @@ from selenium.webdriver.edge.service import Service
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from pathlib import Path
 import shutil
-import datetime
+# import datetime
 import win32api
 import win32print
 
-dt_now = datetime.datetime.now()
-ym = dt_now.strftime('%Y-%m')
+# dt_now = datetime.datetime.now()
+# ym = dt_now.strftime('%Y-%m')
 USERID ="e-shop@g4-suehiro.jp"
 PASSWORD ="Suehiro44593"
 
@@ -48,7 +48,7 @@ def softbank () :
 
     targetPath = Path('C:\\Users\\kusui\\OneDrive\\デスクトップ\\download')
     rename = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\download\\ソフトバンク.pdf'
-    moved_folder = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書\\' + str(ym)
+    moved_folder = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書\\' + str(sum.ym)
 
     
     for item in targetPath.glob('*.pdf'):

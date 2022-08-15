@@ -4,16 +4,16 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.edge.service import Service
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from pathlib import Path
-import pathlib
+# import pathlib
 import shutil
-import datetime
+# import datetime
 import os
 import win32api
 import win32print
 
-dt_now = datetime.datetime.now()
-ym = dt_now.strftime('%Y-%m')
-md = dt_now.strftime('%m-%d')
+# dt_now = datetime.datetime.now()
+# ym = dt_now.strftime('%Y-%m')
+# md = dt_now.strftime('%m-%d')
 USERID =[ "048924630003", "048924630033", "036265690502"]
 PASSWORD ="ginza444"
 
@@ -58,14 +58,14 @@ def yamato():
         sleep(1)
 
 
-        targetPath = Path('C:\\Users\\kusui\\OneDrive\\デスクトップ\\download')
+        # targetPath = Path('C:\\Users\\kusui\\OneDrive\\デスクトップ\\download')
         rename = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\download\\ヤマト' + str(i) + '.pdf'
-        moved_folder = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書\\' + str(ym)
+        # moved_folder = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書\\' + str(ym)
 
         for item in targetPath.glob('*.pdf'):
             item2 = item.rename(rename)
 
-            item3 = shutil.move(item2, moved_folder )
+            item3 = shutil.move(item2, sum.moved_folder )
             yamato_list.append(item3)
             conf_file_path = item3
             # win32api.ShellExecute(
@@ -91,7 +91,7 @@ def yamato():
 
         for ite in targetPath.glob('*.pdf'):
             item_sc = ite.rename(rename_sc)
-            item_sc_n = shutil.move(item_sc, moved_folder )
+            item_sc_n = shutil.move(item_sc, sum.moved_folder )
             yamato_list.append(item_sc_n)
             conf_file_path = item_sc_n
             # win32api.ShellExecute(

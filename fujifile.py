@@ -3,15 +3,16 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.edge.service import Service
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
-from pathlib import Path
+# from pathlib import Path
 import shutil
-import datetime
+# import datetime
 import os
 import win32api
 import win32print
+import sum
 
-dt_now = datetime.datetime.now()
-ym = dt_now.strftime('%Y-%m')
+# dt_now = datetime.datetime.now()
+# ym = dt_now.strftime('%Y-%m')
 USERID ="e-shop@g4-suehiro.jp"
 PASSWORD ="suehiro444"
 
@@ -46,15 +47,15 @@ def fujifile():
     driver.find_element(By.ID, 'ebillingDownload').click()
     sleep(2)
 
-    targetPath = Path('C:\\Users\\kusui\\OneDrive\\デスクトップ\\download')
+    # targetPath = Path('C:\\Users\\kusui\\OneDrive\\デスクトップ\\download')
     rename = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\download\\富士フィルム.pdf'
-    moved_folder = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書\\' + str(ym)
+    # moved_folder = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書\\' + str(sum.ym)
 
 
 
-    for item in targetPath.glob('*.pdf'):
+    for item in sum.targetPath.glob('*.pdf'):
         item2 = item.rename(rename)
-        item3 = shutil.move(item2, moved_folder )
+        item3 = shutil.move(item2, sum.moved_folder )
         conf_file_path = item3
         win32api.ShellExecute(
             0,
