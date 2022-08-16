@@ -67,16 +67,7 @@ def yamato():
 
             item3 = shutil.move(item2, sum.moved_folder )
             yamato_list.append(item3)
-            conf_file_path = item3
-            # win32api.ShellExecute(
-
-            #         0,
-            #         "print",
-            #         conf_file_path,
-            #         "/c:""%s" % win32print.GetDefaultPrinter(),
-            #         ".",
-            #         0
-            #             )
+            sum.printout(item3)
             
 
         driver.find_element(By.ID, 'DETAIL_DOWNLOAD').click()
@@ -93,16 +84,8 @@ def yamato():
             item_sc = ite.rename(rename_sc)
             item_sc_n = shutil.move(item_sc, sum.moved_folder )
             yamato_list.append(item_sc_n)
-            conf_file_path = item_sc_n
-            # win32api.ShellExecute(
-
-            #         0,
-            #         "print",
-            #         conf_file_path,
-            #         "/c:""%s" % win32print.GetDefaultPrinter(),
-            #         ".",
-            #         0
-            #             )
+            # conf_file_path = item_sc_n
+            sum.printout(item_sc_n)
             
 
         

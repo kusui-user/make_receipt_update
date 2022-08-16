@@ -68,30 +68,12 @@ def rakuten():
             if (i == 0):
                 item3 = shutil.move(item2, sum.moved_folder_food )
                 rakuten_list.append(item3)
-                conf_file_path = item3
-                win32api.ShellExecute(
-
-                    0,
-                    "print",
-                    conf_file_path,
-                    "/c:""%s" % win32print.GetDefaultPrinter(),
-                    ".",
-                    0
-                        )
+                sum.printout(item3)
             
             elif(i == 1):
                 item4 = shutil.move(item2, sum.moved_folder_suehiro )
                 rakuten_list.append(item4)
-                conf_file_path = item4
-                win32api.ShellExecute(
-
-                    0,
-                    "print",
-                    conf_file_path,
-                    "/c:""%s" % win32print.GetDefaultPrinter(),
-                    ".",
-                    0
-                        )
+                sum.printout(item4)
             else:
                 break
 

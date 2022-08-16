@@ -39,7 +39,7 @@ moved_folder_food = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書(F
 moved_folder_suehiro = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書\\' + str(ym)
 
 
-def pritout(file):
+def printout(file):
   conf_file_path = file
   win32api.ShellExecute(
             0,

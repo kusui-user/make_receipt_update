@@ -56,15 +56,7 @@ def fujifile():
     for item in sum.targetPath.glob('*.pdf'):
         item2 = item.rename(rename)
         item3 = shutil.move(item2, sum.moved_folder )
-        conf_file_path = item3
-        win32api.ShellExecute(
-            0,
-            "print",
-            conf_file_path,
-            "/c:""%s" % win32print.GetDefaultPrinter(),
-            ".",
-            0
-                )
+        sum.printout(item3)
     return item3
         
         

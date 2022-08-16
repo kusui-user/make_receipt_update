@@ -1,3 +1,4 @@
+# from asyncore import file_dispatcher
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -8,6 +9,7 @@ import shutil
 # import datetime
 import win32api
 import win32print
+import sum
 
 # dt_now = datetime.datetime.now()
 # ym = dt_now.strftime('%Y-%m')
@@ -54,16 +56,9 @@ def softbank () :
     for item in targetPath.glob('*.pdf'):
         item2 = item.rename(rename)
         item3 = shutil.move(item2, moved_folder )
-        conf_file_path = item3
-        win32api.ShellExecute(
-
-                0,
-                "print",
-                conf_file_path,
-                "/c:""%s" % win32print.GetDefaultPrinter(),
-                ".",
-                0
-                    )
+        # conf_file_path = file
+        sum.printout(item3)
+        
         return item3
 
 
