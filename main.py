@@ -3,22 +3,13 @@ from backports import ssl
 from OpenSSL import SSL
 import pyzmail
 import os
-# import datetime
 from slackweb import Slack
 from dotenv import load_dotenv
-import shutil
 import sum
 
 
 load_dotenv()
 
-
-# dt_now = datetime.datetime.now() #main_remake 変数あり 
-# ym = dt_now.strftime('%Y-%m-%d-%S') #main_remake 変数ありymds
-# holder_name = dt_now.strftime('%Y-%m-%d')#main_remake 変数ありholder_name_ymd
-# date_term = datetime.timedelta(days=20)
-# target_date = dt_now - date_term
-# doing_day =dt_now.day
 
 my_mail = "kusui@foodnetwork.co.jp"
 
@@ -40,10 +31,6 @@ context = ssl.SSLContext(SSL.TLSv1_2_METHOD)
 imap = imapclient.IMAPClient("imap.gmail.com", ssl=True, ssl_context=context)
 imap.login(my_mail, app_password)
 
-# folder = r'C:\Users\kusui\OneDrive\デスクトップ\folder'
-# folder_home = r'C:\Users\kusui\Desktop\folder'
-# path = r'C:\Users\kusui\OneDrive\デスクトップ\folder\recipt' + str(holder_name)
-# path_home = r'C:\Users\kusui\Desktop\folder\recipt' + str(holder_name)
 
 if os.path.exists(sum.path):
   pass

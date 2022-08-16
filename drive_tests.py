@@ -1,7 +1,6 @@
 import os
 from pydrive2.auth import GoogleAuth
 from pydrive2.drive import GoogleDrive
-# import datetime
 import main
 import shutil
 import softbank
@@ -12,12 +11,6 @@ import sum
 
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
-
-
-# dt_today = datetime.datetime.now()
-# ym = dt_today.strftime('%Y-%m')
-
-# playing_date = dt_today.day
 
 
 gauth = GoogleAuth()
@@ -34,11 +27,6 @@ def getting_id():
     for f in file_list:
         holder_list[f['title']] = f['id']
 
-
-# holder_name = str(dt_today.strftime('%Y-%m'))
-# holder_name_FN = str(dt_today.strftime('%Y-%m')) + '(FN)'
-# holder_name_Suehiro = str(dt_today.strftime('%Y-%m')) + '(Suehiro)'
-# moved_folder = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書(FN)\\' + str(ym)
 
 getting_id()
 

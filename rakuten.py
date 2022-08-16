@@ -4,16 +4,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.edge.service import Service
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from pathlib import Path
-# import pathlib
 import shutil
-# import datetime
-import os
-import win32api
-import win32print
 
-# dt_now = datetime.datetime.now()
-# ym = dt_now.strftime('%Y-%m')
-# md = dt_now.strftime('%m-%d')
+
+
 USERID =["3000123971","3000181665"]
 PASSWORD =["sunnet98769", "ginza4Suehiro10"]
 rakuten_list = []
@@ -54,11 +48,7 @@ def rakuten():
         driver.find_element(By.XPATH, '/html/body/div[1]/main/div[1]/form/div[2]/table/tbody[1]/tr[5]/td/div[1]/div/button[1]').click()
         sleep(1)
 
-
-        # targetPath = Path('C:\\Users\\kusui\\OneDrive\\デスクトップ\\download')
         rename = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\download\\楽天' + str(sum.md) + '.pdf'
-        # moved_folder_food = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書(FN)\\' + str(sum.ym)
-        # moved_folder_suehiro = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書\\' + str(sum.ym)
 
         
 

@@ -6,13 +6,8 @@ from selenium.webdriver.edge.service import Service
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from pathlib import Path
 import shutil
-# import datetime
-import win32api
-import win32print
 import sum
 
-# dt_now = datetime.datetime.now()
-# ym = dt_now.strftime('%Y-%m')
 USERID ="e-shop@g4-suehiro.jp"
 PASSWORD ="Suehiro44593"
 
