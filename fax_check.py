@@ -13,9 +13,6 @@ fax_pdf = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\FAX-PDF\\'
 path = r'C:\Users\kusui\OneDrive\デスクトップ\FAX-PDF\fax' + str(holder_name_ymd)
 
 
-
-
-
 gauth = GoogleAuth()
 gauth.LocalWebserverAuth()
 drive = GoogleDrive(gauth)
@@ -26,6 +23,7 @@ holder_list = {}
 def getting_id():
     for f in file_list:
         holder_list[f['title']] = f['id']
+    return holder_list[holder_name_ymd]
 
 def fax_transfer_drive (file):
   f = drive.CreateFile({"parents": [{"id": fax_id}]})
@@ -33,17 +31,14 @@ def fax_transfer_drive (file):
   # f['title'] = title
   f.Upload()
 
+def fax_checking ():
+  if not os.path.exists(path):
+    os.mkdir(path)
+  #   pass
+  # else:
+  #   os.mkdir(path)
+  
 
-getting_id()
-
-#フォルダーid
-fax_id = holder_list[holder_name_ymd]
-
-
-if os.path.exists(path):
-  pass
-else:
-  os.mkdir(path)
 
 
 if holder_name_ymd in holder_list:
@@ -66,7 +61,8 @@ for file in share.glob("*.pdf"):
 for item in os.listdir(fax_pdf):
         
        if item.endswith('.pdf'):
-            fax_transfer_drive(item)
+         fax_id = getting_id()
+         fax_transfer_drive(item)
        
 
 
