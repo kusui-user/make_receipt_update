@@ -92,7 +92,7 @@ elif sum.playing_date == 8 or 28:
   moving_google_drive(rename[0], "rakuten", holder_name_FN_id)
   moving_google_drive(rename[1], "rakuten", holder_name_Suehiro_id)
 
-elif sum.playing_date == 14:
+elif sum.playing_date == 4:
   rename = yamato.yamato()
   print(rename)
 
