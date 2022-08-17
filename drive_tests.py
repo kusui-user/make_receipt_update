@@ -85,7 +85,7 @@ elif sum.playing_date == 7:
   rename = fujifile.fujifile()
   moving_google_drive(rename, "fujifile", holder_name_Suehiro_id)
 
-elif sum.playing_date == 8 or 28:
+elif sum.playing_date == 8 or sum.playing_date == 28:
   rename = rakuten.rakuten()
   print(rename)
 
