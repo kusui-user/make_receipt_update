@@ -1,3 +1,4 @@
+import schedule
 import time
 import pathlib
 import shutil
@@ -19,54 +20,51 @@ drive = GoogleDrive(gauth)
 
 file_list = drive.ListFile().GetList()
 holder_list = {}
+fax_id = ''
 
 def getting_id():
     for f in file_list:
         holder_list[f['title']] = f['id']
-    return holder_list[holder_name_ymd]
+    
 
 def fax_transfer_drive (file):
+  fax_id = holder_list[holder_name_ymd]
   f = drive.CreateFile({"parents": [{"id": fax_id}]})
   f.SetContentFile(file)
   # f['title'] = title
   f.Upload()
 
+getting_id()
+
 def fax_checking ():
+  print('スタートします')
   if not os.path.exists(path):
     os.mkdir(path)
-  #   pass
-  # else:
-  #   os.mkdir(path)
-  
 
-
-
-if holder_name_ymd in holder_list:
-   print('aruyo')
-else:
-   f = drive.CreateFile({'title': holder_name_ymd,
+  if not holder_name_ymd in holder_list:
+     f = drive.CreateFile({'title': holder_name_ymd,
                               'mimeType': 'application/vnd.google-apps.folder'})
-   f.Upload()
-   print('tsukutayo')
-
-for file in share.glob("*.pdf"):
-    
-    shutil.copy(file, path)
+     f.Upload()
+     getting_id()
+  
+  for file in share.glob("*.pdf"):
     shutil.move(file, fax_pdf)
-
-# for file in fax_pdf.glob("*.pdf"):
-#   fax_transfer_drive(file)
-
-
-for item in os.listdir(fax_pdf):
-        
+  
+  for item in os.listdir(fax_pdf):   
        if item.endswith('.pdf'):
-         fax_id = getting_id()
+         item = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\FAX-PDF\\' + item
          fax_transfer_drive(item)
-       
+         shutil.move(item, path)
 
+def shutdown():
+  os.system('shutdown -s')
+  
+# schedule.every(2).minutes.do(fax_checking)
+# schedule.every().day.at("10:20").do(shutdown)
 
-
+# while True:
+#     schedule.run_pending()
+#     time.sleep(1)
 
 
 
