@@ -9,6 +9,8 @@ import sum
 
 from datetime import datetime, date, timedelta
 
+from selenium.webdriver.common.keys import Keys
+
 today = datetime.today()
 
 
@@ -61,7 +63,19 @@ def order_sheet () :
     driver.find_element(by=By.ID, value="mm_sub0201_18").click()
     driver.implicitly_wait(10)
     
+    driver.find_element(by=By.ID, value="startDate").click
+    driver.find_element(by=By.ID, value="startDate").sendKeys(Keys.BACK_SPACE)
+    driver.find_element(by=By.ID, value="startDate").sendKeys(Keys.BACK_SPACE)
+    driver.find_element(by=By.ID, value="startDate").sendKeys(Keys.BACK_SPACE)
+    driver.find_element(by=By.ID, value="startDate").sendKeys(Keys.BACK_SPACE)
+    sleep(10)
+  
+    
     driver.find_element(by=By.ID, value="startDate").send_keys(start_date)
+    
+    driver.find_element(by=By.ID, value="endDate").click
+    driver.find_element(by=By.ID, value="endDate").get_attribute('value')
+    driver.find_element(by=By.ID, value="endDate").clear
     driver.find_element(by=By.ID, value="endDate").send_keys(end_date)
     sleep(10)
 
