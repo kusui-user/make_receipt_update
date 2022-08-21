@@ -7,12 +7,14 @@ import win32print
 
 
 
+
 load_dotenv()
 
 #変数
 dt_today = datetime.datetime.now()
 ym = dt_today.strftime('%Y-%m')
 ymds = dt_today.strftime('%Y-%m-%d-%S')
+ymd = dt_today.strftime('%Y-%m-%d')
 md = dt_today.strftime('%m-%d')
 date_term = datetime.timedelta(days=20)
 target_date = dt_today - date_term
