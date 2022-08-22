@@ -62,22 +62,45 @@ def order_sheet () :
     
     driver.find_element(by=By.ID, value="mm_sub0201_18").click()
     driver.implicitly_wait(10)
+
+
+    driver.find_element(by=By.ID, value="orderProgressList5").click() #発送済チエック
+    driver.find_element(by=By.ID, value="orderProgressList6").click() #支払手続き中チエック
+    driver.find_element(by=By.ID, value="orderProgressList7").click() #支払手続き済チエック
+
+
     
     driver.find_element(by=By.ID, value="startDate").click
-    driver.find_element(by=By.ID, value="startDate").sendKeys(Keys.BACK_SPACE)
-    driver.find_element(by=By.ID, value="startDate").sendKeys(Keys.BACK_SPACE)
-    driver.find_element(by=By.ID, value="startDate").sendKeys(Keys.BACK_SPACE)
-    driver.find_element(by=By.ID, value="startDate").sendKeys(Keys.BACK_SPACE)
-    sleep(10)
-  
-    
+    driver.find_element(by=By.ID, value="startDate").clear
+    for i in range(10):     
+        driver.find_element(by=By.ID, value="startDate").send_keys(Keys.BACK_SPACE)
     driver.find_element(by=By.ID, value="startDate").send_keys(start_date)
     
     driver.find_element(by=By.ID, value="endDate").click
-    driver.find_element(by=By.ID, value="endDate").get_attribute('value')
     driver.find_element(by=By.ID, value="endDate").clear
+    for i in range(10):  
+        driver.find_element(by=By.ID, value="endDate").send_keys(Keys.BACK_SPACE)
     driver.find_element(by=By.ID, value="endDate").send_keys(end_date)
-    sleep(10)
+    sleep(1)
+
+    # driver.execute_script("window.scrollBy(0, 1000);")
+
+
+    driver.find_element(by=By.ID, value="rms-content-save-button").click() #検索ボタン
+
+    driver.find_element(By.XPATH, '//*[@id="ddlDisplay"]/option[5]').click()#300件選択
+
+    driver.find_element(by=By.ID, value="rms-checkbox-order-header-checkbox").click()#全選択チエック
+
+    driver.find_element(By.CLASS_NAME, value="rms-collapse-button").click()#一括処理
+
+
+    driver.find_element(by=By.ID, value="btnFormCreation").click()#作成ボタン
+    driver.find_element(by=By.ID, value="pdfOpen").click()#pdfを開くボタン
+    driver.find_element(by=By.ID, value="icon").click()#pdfを開くボタン
+    sleep(100)
+
+    
 
     # driver.switch_to.frame(driver.find_element(By.ID, value="embeddedIframe"))
     # driver.implicitly_wait(10)

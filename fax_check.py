@@ -59,12 +59,12 @@ def fax_checking ():
 def shutdown():
   os.system('shutdown -s')
   
-# schedule.every(2).minutes.do(fax_checking)
+schedule.every(2).minutes.do(fax_checking)
 # schedule.every().day.at("10:20").do(shutdown)
 
-# while True:
-#     schedule.run_pending()
-#     time.sleep(1)
+while True:
+    schedule.run_pending()
+    time.sleep(1)
 
 
 
