@@ -4,8 +4,12 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.edge.service import Service
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
-from pathlib import Path
 import sum
+import shutil
+import pyautogui as pag
+import os
+import pathlib
+import schedule
 
 from datetime import datetime, date, timedelta
 
@@ -17,14 +21,19 @@ today = datetime.today()
 before_7day = today - timedelta(days=7)
 yesterday = today - timedelta(days=1)
 
-start_date =datetime.strftime(before_7day, '%Y-%m-%d') 
-end_date =datetime.strftime(yesterday, '%Y-%m-%d') 
+start_date =datetime.strftime(before_7day, '%Y.%m.%d') 
+end_date =datetime.strftime(yesterday, '%Y.%m.%d') 
+end_date_dd =datetime.strftime(yesterday, '%d') 
+file_name = start_date + "-" + end_date_dd + ".pdf"
+dowload_folder = r'C:\\Users\\kusui\\Downloads\\'
 
 USERID ="g4suehiro"
 PASSWORD ="Suehiro444"
 
 USERID_person ="kusui.takashi@gmail.com"
 PASSWORD_person ="Tkusui4860@"
+
+Open_folder = pathlib.WindowsPath(r'\\SUEHIRO\open\\注文書\\スエヒロ\\{}\\{}\\楽天' .format(sum.y, sum.ym))
 
 def order_sheet () :
     options = webdriver.EdgeOptions()
@@ -39,6 +48,8 @@ def order_sheet () :
     )
 
     driver.get("https://glogin.rms.rakuten.co.jp/?sp_id=1")
+
+    driver.maximize_window()
 
 
     driver.find_element(by=By.ID, value="rlogin-username-ja").send_keys(USERID)
@@ -89,45 +100,48 @@ def order_sheet () :
     driver.find_element(by=By.ID, value="rms-content-save-button").click() #検索ボタン
 
     driver.find_element(By.XPATH, '//*[@id="ddlDisplay"]/option[5]').click()#300件選択
+    sleep(1)
 
     driver.find_element(by=By.ID, value="rms-checkbox-order-header-checkbox").click()#全選択チエック
 
     driver.find_element(By.CLASS_NAME, value="rms-collapse-button").click()#一括処理
 
-
     driver.find_element(by=By.ID, value="btnFormCreation").click()#作成ボタン
+    sleep(1)
     driver.find_element(by=By.ID, value="pdfOpen").click()#pdfを開くボタン
-    driver.find_element(by=By.ID, value="icon").click()#pdfを開くボタン
-    sleep(100)
+    sleep(30)
+  
+
+    pag.click(1236 ,178)
+    sleep(5)
+
+    # pag.click(1236 ,178)
+    pag.press("backspace")
+    sleep(1)
+
+    pag.write(file_name)
+    sleep(1)
+
+    pag.click(223 ,376)
+    sleep(1)
+    
+    pag.click(504 ,447)
+    sleep(1)
+    print('終わりました')
+
+    for item in os.listdir(dowload_folder ):   
+       if item.endswith(file_name ):
+        print('OK')
+        shutil.move(f"{dowload_folder}/{item}", Open_folder)
+       else:
+        print('NO')
 
     
 
-    # driver.switch_to.frame(driver.find_element(By.ID, value="embeddedIframe"))
-    # driver.implicitly_wait(10)
-    # driver.find_element(By.CLASS_NAME, value="btnBill").click()
-    # sleep(2)
 
+schedule.every().monday.at("17:00").do(order_sheet) 
 
-    # driver.implicitly_wait(10)
-    # sleep(2)
-
-    # targetPath = Path('C:\\Users\\kusui\\OneDrive\\デスクトップ\\download')
-    # rename = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\download\\ソフトバンク.pdf'
-    # moved_folder = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書\\' + str(sum.ym)
-
-    
-    # for item in targetPath.glob('*.pdf'):
-    #     item2 = item.rename(rename)
-    #     item3 = shutil.move(item2, moved_folder )
-    #     # conf_file_path = file
-    #     sum.printout(item3)
-        
-    #     return item3
-
-
-
-
-
-    
+while True:
+    schedule.run_pending()
+    sleep(1)    
       
-order_sheet ()

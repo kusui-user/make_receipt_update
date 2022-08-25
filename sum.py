@@ -1,5 +1,6 @@
 
 import datetime
+from tkinter import Y
 from dotenv import load_dotenv
 from pathlib import Path
 import win32api
@@ -12,6 +13,7 @@ load_dotenv()
 
 #変数
 dt_today = datetime.datetime.now()
+y=dt_today.strftime('%Y')
 ym = dt_today.strftime('%Y-%m')
 ymds = dt_today.strftime('%Y-%m-%d-%S')
 ymd = dt_today.strftime('%Y-%m-%d')

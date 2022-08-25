@@ -35,10 +35,10 @@ imap = imapclient.IMAPClient("imap.gmail.com", ssl=True, ssl_context=context)
 imap.login(my_mail, app_password)
 
 
-if os.path.exists(sum.path_home):
+if os.path.exists(sum.path):
   pass
 else:
-  os.mkdir(sum.path_home)
+  os.mkdir(sum.path)
 
 def get_receipt (company):
     imap.select_folder("INBOX", readonly=True)
@@ -62,24 +62,24 @@ def get_receipt (company):
             
             
 
-            with open(f'{sum.folder_home}/{file_name}', 'wb') as f:
+            with open(f'{sum.folder}/{file_name}', 'wb') as f:
                 f.write(part.get_payload(decode=True))
 
 
-    for item in os.listdir(sum.folder_home):
-        # rename = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\folder\\' + company + str(sum.ymds) + str(i) + '.pdf'
-        rename_home = 'C:\\Users\\kusui\\Desktop\\folder\\' + company + str(sum.ymds) + str(i) + '.pdf'
+    for item in os.listdir(sum.folder):
+        rename = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\folder\\' + company + str(sum.ymds) + str(i) + '.pdf'
+        # rename_home = 'C:\\Users\\kusui\\Desktop\\folder\\' + company + str(sum.ymds) + str(i) + '.pdf'
         if item.endswith('.pdf'):
-            os.rename(f"{sum.folder_home}/{item}", rename_home)
+            os.rename(f"{sum.folder_home}/{item}", rename)
             # shutil.move(rename, path)
-            return rename_home
+            return rename
     
         i = i + 1 
         
     # slack.notify(text="amazon請求書を取得しました")
 
 
-get_receipt("iizuka")
+# get_receipt("iizuka")
 
 
 
