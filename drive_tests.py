@@ -8,6 +8,9 @@ import fujifile
 import rakuten
 import yamato
 import sum
+import schedule
+import order_sheet_rakuten
+from time import sleep
 
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
@@ -100,7 +103,13 @@ elif sum.playing_date == 4:
     moving_google_drive(rename[index], "yamato"+ str(index), holder_name_Suehiro_id)
 
  
+schedule.every().monday.at("7:10").do(order_sheet_rakuten.order_sheet) 
 
+while True:
+    schedule.run_pending()
+    sleep(1) 
+
+print('全て終了しました')   
 
   
 
