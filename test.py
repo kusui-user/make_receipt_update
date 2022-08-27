@@ -1,51 +1,39 @@
-from datetime import datetime, date, timedelta
+# from asyncore import file_dispatcher
+from time import sleep
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.edge.service import Service
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
+from pathlib import Path
 import shutil
-import os
 import sum
-import pathlib
-dowload_folder = r'C:\\Users\\kusui\\Downloads\\'
 
-today = datetime.today()
-
-
-before_7day = today - timedelta(days=7)
-yesterday = today - timedelta(days=1)
-ym = today.strftime('%Y.%m')
-
-start_date =datetime.strftime(before_7day, '%Y.%m.%d') 
-end_date =datetime.strftime(yesterday, '%d') 
-
-file_name = "楽天" + start_date + "-" + end_date
-file_name2 = start_date + "-" + end_date + ".pdf"
-
-# share = pathlib.WindowsPath(f'\\SUEHIRO\\open\\注文書\\スエヒロ\\{sum.y}\\{ym}\\楽天')
-Open_folder = pathlib.WindowsPath(r'\\SUEHIRO\open\\注文書\\スエヒロ\\{}\\{}\\楽天' .format(sum.y, ym))
-# share = pathlib.WindowsPath(r'\\SUEHIRO\\open\\注文書\\スエヒロ\\2022\\{}\\楽天' .format(ym))
-share2 = pathlib.WindowsPath(r'\\SUEHIRO\scan\SCAN')
+USERID ="e-shop@g4-suehiro.jp"
+PASSWORD ="Suehiro44593"
 
 
+options = webdriver.EdgeOptions()
+download = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\download'
 
-# print( datetime.strftime(before_7day, '%Y-%m-%d'))
-# print("昨日 -> " + datetime.strftime(yesterday, '%Y-%m-%d'))
+    # ブラウザを非表示視するオプション
+    # options.add_argument('--headless')
+options.add_experimental_option("prefs", {"download.default_directory": download })
+driver = webdriver.Edge(
+        service=Service(EdgeChromiumDriverManager().install()),
+        options=options
+    )
 
-print(share)
-print(file_name2)
-
-# for file in dowload_folder.glob("*.pdf"):
-#   shutil.move(f"{dowload_folder}/{file}", share2)
-  # print(file)
-    # shutil.move(file, fax_pdf)
-
-
-for item in os.listdir(dowload_folder ):   
-       if item.endswith(file_name2 ):
-        print('OK')
-        shutil.move(f"{dowload_folder}/{item}", share)
-       else:
-        print('NO')
+driver.get("https://webmeisai.itc.softbank.jp")
 
 
+driver.find_element(by=By.ID, value="login").send_keys(USERID)
+driver.implicitly_wait(10)
+driver.find_element(by=By.ID, value="password").send_keys(PASSWORD)
+driver.implicitly_wait(10)
+sleep(1)
 
+# import sys
+# sys.base_prefix
 
 
 
