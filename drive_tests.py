@@ -108,8 +108,9 @@ schedule.every().monday.at("7:10").do(order_sheet_rakuten.order_sheet)
 while True:
     schedule.run_pending()
     sleep(1) 
+    print('全て終了しました') 
 
-print('全て終了しました')   
+  
 
   
 
