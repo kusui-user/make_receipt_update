@@ -5,6 +5,7 @@ from selenium.webdriver.edge.service import Service
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from pathlib import Path
 import shutil
+import sum
 
 
 
@@ -54,7 +55,7 @@ def yamato():
 
         rename = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\download\\ヤマト' + str(i) + '.pdf'
 
-        for item in targetPath.glob('*.pdf'):
+        for item in sum.targetPath.glob('*.pdf'):
             item2 = item.rename(rename)
 
             item3 = shutil.move(item2, sum.moved_folder )

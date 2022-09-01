@@ -46,10 +46,13 @@ def fax_checking ():
                               'mimeType': 'application/vnd.google-apps.folder'})
      f.Upload()
      getting_id()
+     time.sleep(300)
   
   for file in share.glob("*.pdf"):
     shutil.move(file, fax_pdf)
   
+
+
   for item in os.listdir(fax_pdf):   
        if item.endswith('.pdf'):
          item = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\FAX-PDF\\' + item
@@ -59,8 +62,8 @@ def fax_checking ():
 def shutdown():
   os.system('shutdown -s')
   
-schedule.every(2).minutes.do(fax_checking)
-# schedule.every().day.at("10:20").do(shutdown)
+schedule.every(10).minutes.do(fax_checking)
+schedule.every().day.at("17:20").do(shutdown)
 
 while True:
     schedule.run_pending()

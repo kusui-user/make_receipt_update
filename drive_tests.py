@@ -37,8 +37,8 @@ getting_id()
 seikyusho_id = holder_list["請求書"]
 suehiro_id = holder_list["スエヒロ"]
 foodnetwork_id = holder_list["foodnetwork"]
-holder_name_FN_id = holder_list[sum.holder_name_FN]
 holder_name_Suehiro_id = holder_list[sum.holder_name_Suehiro ]
+holder_name_FN_id = holder_list[sum.holder_name_FN]
 
 
 if sum.holder_name_Suehiro in holder_list:
@@ -65,12 +65,12 @@ def moving_google_drive(rename,title,id) :
    f['title'] = title
    f.Upload()
 
-if sum.playing_date == 1:
+if sum.playing_date == 0:
   rename = main.get_receipt("microsoft")
   moving_google_drive(rename, "microsoft", holder_name_FN_id)
   shutil.move(rename, sum.moved_folder)
 
-elif sum.playing_date == 3:
+elif sum.playing_date == 0:
   rename = main.get_receipt("amazon")
   moving_google_drive(rename, "amazon", holder_name_FN_id)
   shutil.move(rename, sum.moved_folder)
@@ -95,20 +95,24 @@ elif sum.playing_date == 8 or sum.playing_date == 25:
   moving_google_drive(rename[0], "rakuten", holder_name_FN_id)
   moving_google_drive(rename[1], "rakuten", holder_name_Suehiro_id)
 
-elif sum.playing_date == 4:
+elif sum.playing_date == 0:
   rename = yamato.yamato()
   print(rename)
 
   for index,name in enumerate(rename) :
     moving_google_drive(rename[index], "yamato"+ str(index), holder_name_Suehiro_id)
 
- 
-schedule.every().monday.at("7:10").do(order_sheet_rakuten.order_sheet) 
+
+def shut_down():
+  os.system('shutdown -s')
+
+schedule.every().monday.at("07:20").do(order_sheet_rakuten.order_sheet) 
+schedule.every().day.at("10:50").do(shut_down)
 
 while True:
     schedule.run_pending()
     sleep(1) 
-    print('全て終了しました') 
+    
 
   
 

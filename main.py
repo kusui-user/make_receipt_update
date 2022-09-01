@@ -70,7 +70,7 @@ def get_receipt (company):
         rename = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\folder\\' + company + str(sum.ymds) + str(i) + '.pdf'
         # rename_home = 'C:\\Users\\kusui\\Desktop\\folder\\' + company + str(sum.ymds) + str(i) + '.pdf'
         if item.endswith('.pdf'):
-            os.rename(f"{sum.folder_home}/{item}", rename)
+            os.rename(f"{sum.folder}/{item}", rename)
             # shutil.move(rename, path)
             return rename
     
