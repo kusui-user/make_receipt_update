@@ -46,7 +46,7 @@ def fax_checking ():
                               'mimeType': 'application/vnd.google-apps.folder'})
      f.Upload()
      getting_id()
-     time.sleep(300)
+    #  time.sleep(300)
   
   for file in share.glob("*.pdf"):
     shutil.move(file, fax_pdf)
@@ -62,7 +62,7 @@ def fax_checking ():
 def shutdown():
   os.system('shutdown -s')
   
-schedule.every(10).minutes.do(fax_checking)
+schedule.every(5).minutes.do(fax_checking)
 schedule.every().day.at("17:20").do(shutdown)
 
 while True:

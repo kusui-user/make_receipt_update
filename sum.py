@@ -37,7 +37,7 @@ folder_home = r'C:\Users\kusui\Desktop\folder'
 path = r'C:\Users\kusui\OneDrive\デスクトップ\folder\recipt' + str(holder_name)
 path_home = r'C:\Users\kusui\Desktop\folder\recipt' + str(holder_name)
 
-moved_folder = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書(FN)\\' + str(ym)#moved_folder_food同じ
+# moved_folder = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書(FN)\\' + str(ym)#moved_folder_food同じ
 targetPath = Path('C:\\Users\\kusui\\OneDrive\\デスクトップ\\download')
 moved_folder_food = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書(FN)\\' + str(ym)
 moved_folder_suehiro = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書\\' + str(ym)

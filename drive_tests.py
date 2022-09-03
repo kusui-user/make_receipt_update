@@ -68,23 +68,23 @@ def moving_google_drive(rename,title,id) :
 if sum.playing_date == 0:
   rename = main.get_receipt("microsoft")
   moving_google_drive(rename, "microsoft", holder_name_FN_id)
-  shutil.move(rename, sum.moved_folder)
+  shutil.move(rename, sum.moved_folder_suehiro)
 
 elif sum.playing_date == 0:
   rename = main.get_receipt("amazon")
   moving_google_drive(rename, "amazon", holder_name_FN_id)
-  shutil.move(rename, sum.moved_folder)
+  shutil.move(rename, sum.moved_folder_food)
 
-elif sum.playing_date == 5:
+elif sum.playing_date == 3:
   rename = main.get_receipt("google")
   moving_google_drive(rename, "google", holder_name_FN_id)
-  shutil.move(rename, sum.moved_folder)
+  shutil.move(rename, sum.moved_folder_food)
 
 elif sum.playing_date == 6:
   rename = softbank.softbank()
   moving_google_drive(rename, "softbank", holder_name_Suehiro_id)
 
-elif sum.playing_date == 7:
+elif sum.playing_date == 0:
   rename = fujifile.fujifile()
   moving_google_drive(rename, "fujifile", holder_name_Suehiro_id)
 

@@ -45,12 +45,12 @@ def softbank () :
 
     targetPath = Path('C:\\Users\\kusui\\OneDrive\\デスクトップ\\download')
     rename = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\download\\ソフトバンク.pdf'
-    moved_folder = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書\\' + str(sum.ym)
+    # moved_folder = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\請求書\\' + str(sum.ym)
 
     
     for item in targetPath.glob('*.pdf'):
         item2 = item.rename(rename)
-        item3 = shutil.move(item2, moved_folder )
+        item3 = shutil.move(item2, sum.moved_folder_suehirod_folder )
         # conf_file_path = file
         sum.printout(item3)
         

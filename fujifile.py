@@ -31,21 +31,26 @@ def fujifile():
     driver.find_element(by=By.ID, value="IDToken2").send_keys(PASSWORD)
     driver.implicitly_wait(10)
 
-    driver.find_element(By.NAME, "IDButton").click()
+    driver.find_element(By.NAME, value="IDButton").click()
     driver.implicitly_wait(10)
 
-    driver.find_element(By.CLASS_NAME, "menuInfo").click()
+    driver.find_element(By.CLASS_NAME, value="menuInfo").click()
     driver.implicitly_wait(10)
-
-    driver.find_element(By.ID, 'ebillingDownload').click()
     sleep(2)
+
+    driver.find_element(By.XPATH, '//*[@id="ebillingDownload"]/a').click()
+    sleep(2)
+
+    
+
+    
 
     rename = 'C:\\Users\\kusui\\OneDrive\\デスクトップ\\download\\富士フィルム.pdf'
 
 
     for item in sum.targetPath.glob('*.pdf'):
         item2 = item.rename(rename)
-        item3 = shutil.move(item2, sum.moved_folder )
+        item3 = shutil.move(item2, sum.moved_folder_suehiro )
         sum.printout(item3)
     return item3
         
