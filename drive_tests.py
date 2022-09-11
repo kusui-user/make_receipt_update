@@ -106,7 +106,7 @@ elif sum.playing_date == 0:
 def shut_down():
   os.system('shutdown -s')
 
-# schedule.every().monday.at("07:20").do(order_sheet_rakuten.order_sheet) 
+schedule.every().monday.at("07:20").do(order_sheet_rakuten.order_sheet) 
 schedule.every().day.at("10:50").do(shut_down)
 
 while True:
