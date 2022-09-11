@@ -65,7 +65,7 @@ def moving_google_drive(rename,title,id) :
    f['title'] = title
    f.Upload()
 
-if sum.playing_date == 0:
+if sum.playing_date == 11:
   rename = main.get_receipt("microsoft")
   moving_google_drive(rename, "microsoft", holder_name_FN_id)
   shutil.move(rename, sum.moved_folder_suehiro)
@@ -80,7 +80,7 @@ elif sum.playing_date == 3:
   moving_google_drive(rename, "google", holder_name_FN_id)
   shutil.move(rename, sum.moved_folder_food)
 
-elif sum.playing_date == 6:
+elif sum.playing_date == 5:
   rename = softbank.softbank()
   moving_google_drive(rename, "softbank", holder_name_Suehiro_id)
 
@@ -106,7 +106,7 @@ elif sum.playing_date == 0:
 def shut_down():
   os.system('shutdown -s')
 
-schedule.every().monday.at("07:20").do(order_sheet_rakuten.order_sheet) 
+# schedule.every().monday.at("07:20").do(order_sheet_rakuten.order_sheet) 
 schedule.every().day.at("10:50").do(shut_down)
 
 while True:

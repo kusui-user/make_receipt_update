@@ -50,7 +50,7 @@ def softbank () :
     
     for item in targetPath.glob('*.pdf'):
         item2 = item.rename(rename)
-        item3 = shutil.move(item2, sum.moved_folder_suehirod_folder )
+        item3 = shutil.move(item2, sum.moved_folder_suehiro )
         # conf_file_path = file
         sum.printout(item3)
         
